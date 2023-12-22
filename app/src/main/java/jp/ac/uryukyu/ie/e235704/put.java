@@ -2,17 +2,14 @@ package jp.ac.uryukyu.ie.e235704;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class put {
-    Scanner scan;
-    put(){
-        scan = new Scanner(System.in);
-    }
+    Scanner scan = new Scanner(System.in);
     ArrayList<Integer> putList = new ArrayList<>();
 
-    ArrayList<Integer> putNumber(){
+    public ArrayList<Integer> putNumber(){
         int num = scan.nextInt();
         for(int i =0;i<4;i++ ){
-            int sum = (num / (int) Math.pow(10,i)) % 10; 
-            if(putList.contains(sum) || num <1000){
+            int sum = (num / (int) Math.pow(10,i)) % 10;  
+            if(putList.contains(sum) || num <1000 || num>9999){        //入力された数字に被りがないかチェック
                 System.out.println("数字に被りがあります。");
                 putList.clear();
                 i = -1; 
@@ -23,11 +20,5 @@ public class put {
             }
         }
         return putList;
-
-    }
-    public static void main(String[] args) {
-        put put = new put();
-        ArrayList<Integer> resultList = put.putNumber();
-        System.out.println("入力された数字の各桁：" + resultList);
     }
 }
