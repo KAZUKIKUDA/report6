@@ -34,7 +34,7 @@ public class matchedNumber {
         putList.clear();
     }
     public boolean isCorrect() {
-        return currentTurn <= maxTurns && randomList.equals(new ArrayList<>(randomList));
+        return currentTurn <= maxTurns && randomList.equals(randomList);
     }
     public int getCurrentTurn() {
         return currentTurn;
