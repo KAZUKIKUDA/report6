@@ -4,11 +4,13 @@ public class matchedNumber {
     private ArrayList<Integer> randomList;
     private int maxTurns;
     private int currentTurn;
+    private boolean gameOver;
 
     public matchedNumber(ArrayList<Integer> randomList) {
         this.randomList = randomList;
         this.maxTurns = 10;
         this.currentTurn = 0;
+        this.gameOver = false;
     }
     public void check(ArrayList<Integer> putList){
         int i = 0;
@@ -32,9 +34,17 @@ public class matchedNumber {
         System.out.println("brow: "+brow);
         currentTurn += 1;
         putList.clear();
+        if (hit == 4) {
+            gameOver = true;
+        }
+
+        // 制限回数が10回を超えた場合、相手が負けでゲームを終了
+        if (currentTurn >= maxTurns) {
+            gameOver = true;
+        }
     }
     public boolean isCorrect() {
-        return currentTurn <= maxTurns && randomList.equals(randomList);
+        return !gameOver;
     }
     public int getCurrentTurn() {
         return currentTurn;

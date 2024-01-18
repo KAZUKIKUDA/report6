@@ -7,7 +7,6 @@ import static org.junit.jupiter.api.Assertions.*;
 public class machedTest {
     @Test
     void machedNumberTest(){
-        // 正しい予測を行った場合のテスト
         ArrayList<Integer> randomList = new ArrayList<>(Arrays.asList(1, 2, 3, 4));
         ArrayList<Integer> correctGuess = new ArrayList<>(Arrays.asList(1, 2, 3, 4));
         matchedNumber game = new matchedNumber(randomList);

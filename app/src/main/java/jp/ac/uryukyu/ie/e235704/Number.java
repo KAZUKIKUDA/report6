@@ -7,7 +7,7 @@ public class Number {
     public ArrayList<Integer> generateNumber(){   //ランダムなリストを生成
         Random rand = new Random();
         while (randomList.size() <4) {
-            int number = rand.nextInt(10); 
+            int number = rand.nextInt(9) + 1; 
             if (! randomList.contains(number)){
                 randomList.add(number);
             }

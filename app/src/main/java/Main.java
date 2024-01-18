@@ -3,6 +3,7 @@ import jp.ac.uryukyu.ie.e235704.*;
 import jp.ac.uryukyu.ie.e235704.Number;
 
 public class Main {
+
     public static void main(String[] args) {
         // ランダムな数字を生成するNumberクラスのインスタンスを作成
         Number numberGenerator = new Number();
@@ -20,11 +21,13 @@ public class Main {
             System.out.println("ターン " + matcher.getCurrentTurn() + ": 4桁の数字を入力してください（各桁は0から9まで）:");
             ArrayList<Integer> userGuess = userInput.putNumber();
             matcher.check(userGuess);
-            System.out.println("残りのターン: " + (matcher.getMaxTurns() - matcher.getCurrentTurn() + 1));
+            if(matcher.isCorrect()){
+                System.out.println("残りのターン: " + (matcher.getMaxTurns() - matcher.getCurrentTurn() + 1));
+            }
         }
 
         // ゲームオーバー時のメッセージ
-        if (matcher.isCorrect()) {
+        if (!matcher.isCorrect()) {
             System.out.println("おめでとうございます！正解です。");
         } else {
             System.out.println("残念！正解は " + randomList + " でした。");
