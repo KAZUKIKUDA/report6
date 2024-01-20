@@ -16,20 +16,23 @@ public class Main {
         matchedNumber matcher = new matchedNumber(randomList);
 
         // ゲームのループ
-        while (matcher.isCorrect()) {
+        while (matcher.winCorrect()) {
             // ユーザーに数字を入力してもらい、結果を表示
             System.out.println("ターン " + matcher.getCurrentTurn() + ": 4桁の数字を入力してください（各桁は0から9まで）:");
             ArrayList<Integer> userGuess = userInput.putNumber();
             matcher.check(userGuess);
-            if(matcher.isCorrect()){
+            if(matcher.winCorrect() && matcher.getCurrentTurn() <= 10){
                 System.out.println("残りのターン: " + (matcher.getMaxTurns() - matcher.getCurrentTurn() + 1));
+            }
+            else{
+                break;
             }
         }
 
         // ゲームオーバー時のメッセージ
-        if (!matcher.isCorrect()) {
+        if (!matcher.winCorrect()){
             System.out.println("おめでとうございます！正解です。");
-        } else {
+        } else{
             System.out.println("残念！正解は " + randomList + " でした。");
         }
     }

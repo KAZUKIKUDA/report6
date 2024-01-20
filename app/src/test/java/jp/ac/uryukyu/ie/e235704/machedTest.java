@@ -12,6 +12,6 @@ public class machedTest {
         matchedNumber game = new matchedNumber(randomList);
 
         game.check(correctGuess);
-        assertFalse(game.isCorrect());
+        assertFalse(game.winCorrect());
     }
 }

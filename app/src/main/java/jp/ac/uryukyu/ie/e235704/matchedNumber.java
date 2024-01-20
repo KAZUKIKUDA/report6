@@ -4,47 +4,44 @@ public class matchedNumber {
     private ArrayList<Integer> randomList;
     private int maxTurns;
     private int currentTurn;
-    private boolean gameOver;
+    private boolean gamewinner;
 
     public matchedNumber(ArrayList<Integer> randomList) {
         this.randomList = randomList;
         this.maxTurns = 10;
         this.currentTurn = 0;
-        this.gameOver = false;
+        this.gamewinner = false;
     }
     public void check(ArrayList<Integer> putList){
-        int i = 0;
         int brow = 0;
         int hit = 0;
-        for (int put : putList){       //順番は関係なく数字の被りを算出
-            for (int random : randomList){
-                if (put == random){
-                    brow += 1;
-                }
-            }
-        }
-        for (int put1 : putList){
-            if(put1 == randomList.get(i)){       //数字の順番と数字が合ってるのかをチェック
+        // 数字と位置が一致するものを検出
+        for (int i = 0; i < putList.size(); i++) {
+            if (putList.get(i) ==randomList.get(i)) {
                 hit += 1;
-                i += 1;
             }
         }
-        brow -= hit;
+
+        // 数字は一致するが位置が異なるものを検出
+        for (int put : putList) {
+            if (randomList.contains(put) && putList.indexOf(put) != randomList.indexOf(put)) {
+                brow += 1;
+            }
+        }
         System.out.println("hit: "+hit);
         System.out.println("brow: "+brow);
         currentTurn += 1;
         putList.clear();
         if (hit == 4) {
-            gameOver = true;
+            gamewinner = true;
         }
 
-        // 制限回数が10回を超えた場合、相手が負けでゲームを終了
-        if (currentTurn >= maxTurns) {
-            gameOver = true;
-        }
+
+
+
     }
-    public boolean isCorrect() {
-        return !gameOver;
+    public boolean winCorrect() {
+        return !gamewinner;
     }
     public int getCurrentTurn() {
         return currentTurn;
