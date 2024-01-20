@@ -12,7 +12,6 @@ public class Number {
                 randomList.add(number);
             }
         }
-        System.out.println(randomList);
         return randomList;
     }
 }

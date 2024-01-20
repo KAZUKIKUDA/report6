@@ -35,10 +35,6 @@ public class matchedNumber {
         if (hit == 4) {
             gamewinner = true;
         }
-
-
-
-
     }
     public boolean winCorrect() {
         return !gamewinner;
